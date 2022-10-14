@@ -8,11 +8,12 @@ import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
 
+
 @SpringBootApplication
 public class Log4j1Application {
 
 	public static void main(String[] args) throws IOException {
-		//BasicConfigurator.configure();
+		BasicConfigurator.configure();
 		ClassPathResource resource = new ClassPathResource("log4j.properties");
 		PropertyConfigurator.configure(resource.getInputStream());
 		SpringApplication.run(Log4j1Application.class, args);
