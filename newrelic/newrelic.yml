@@ -104,6 +104,10 @@ common: &default_settings
       # When true, application logs will be forwarded to New Relic. The default is true.
       enabled: true
 
+      # When true, MDC data included
+      context_data:
+        enabled: true
+
       # Application log events are collected up to the configured amount. Afterwards,
       # events are sampled to maintain an even distribution across the harvest cycle.
       # Default is 10000. Setting to 0 will disable.
@@ -352,5 +356,5 @@ production:
 staging:
   <<: *default_settings
   host: staging-collector.newrelic.com
-  app_name: log4j1
+  app_name: log4j1-mdc
 

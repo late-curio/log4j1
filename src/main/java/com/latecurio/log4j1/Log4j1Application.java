@@ -1,7 +1,5 @@
 package com.latecurio.log4j1;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.PropertyConfigurator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.io.ClassPathResource;
@@ -13,9 +11,9 @@ import java.io.IOException;
 public class Log4j1Application {
 
 	public static void main(String[] args) throws IOException {
-		BasicConfigurator.configure();
+		//BasicConfigurator.configure();
 		ClassPathResource resource = new ClassPathResource("log4j.properties");
-		PropertyConfigurator.configure(resource.getInputStream());
+		//PropertyConfigurator.configure(resource.getInputStream());
 		SpringApplication.run(Log4j1Application.class, args);
 	}
 
