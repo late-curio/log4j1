@@ -175,7 +175,7 @@ common: &default_settings
     # which will use the threshold for the "Frustrated" Apdex level
     # (greater than four times the apdex_t value).
     # Default is apdex_f.
-    transaction_threshold: 0.00001
+    transaction_threshold: 0 #.00001
 
     # When transaction tracer is on, SQL statements can optionally be
     # recorded. The recorder has three modes, "off" which sends no
@@ -287,6 +287,9 @@ common: &default_settings
   class_transformer:
     # This instrumentation reports the name of the user principal returned from
     # HttpServletRequest.getUserPrincipal() when servlets and filters are invoked.
+    com.newrelic.instrumentation.java.spring-4.3.0:
+      enabled: true
+
     com.newrelic.instrumentation.java.completable-future-jdk8u40:
       enabled: true
       

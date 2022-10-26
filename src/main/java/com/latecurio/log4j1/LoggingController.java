@@ -15,7 +15,8 @@ public class LoggingController {
     private static final Logger LOG = Logger.getLogger(LoggingController.class);
 
     @GetMapping("/info")
-    public String logInfo(@RequestParam String message) {
+    public String logInfo(@RequestParam String message) throws InterruptedException {
+        Thread.sleep(1000);
         LOG.info(message);
         return message;
     }
