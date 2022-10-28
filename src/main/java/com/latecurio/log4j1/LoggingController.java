@@ -1,6 +1,7 @@
 package com.latecurio.log4j1;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.MDC;
 import org.apache.log4j.PropertyConfigurator;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ public class LoggingController {
     @GetMapping("/info")
     public String logInfo(@RequestParam String message) throws InterruptedException {
         Thread.sleep(1000);
+        MDC.put("mdc", "data");
         LOG.info(message);
         return message;
     }
