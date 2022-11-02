@@ -41,6 +41,6 @@ test {
 			"-javaagent:/Users/tcrone/work/newrelic/newrelic-java-agent/newrelic-agent/build/newrelicJar/newrelic.jar",
 			//"-javaagent://Users/tcrone/nr/newrelic-agent-7.11.0.jar",
 			"-Dnewrelic.config.file=${project.projectDir}/newrelic/newrelic.yml",
-			"-Dnewrelic.environment=staging",
+			//"-Dnewrelic.environment=staging",
 	]
 }

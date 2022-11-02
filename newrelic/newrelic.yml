@@ -12,8 +12,9 @@ common: &default_settings
   sync_startup: true
   send_data_on_exit: true
   send_data_on_exit_threshold: 0
-#  host: localhost
-#  port: 10101
+  host: localhost
+  port: 10101
+  ca_bundle_path: /Users/tcrone/work/newrelic/mock-collector/conf/java/certs/ca.crt
   # ============================== LICENSE KEY ===============================
   # You must specify the license key associated with your New Relic
   # account. For example, if your license key is 12345 use this:
