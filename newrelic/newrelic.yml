@@ -15,6 +15,8 @@ common: &default_settings
   host: localhost
   port: 10101
   ca_bundle_path: /Users/tcrone/work/newrelic/mock-collector/conf/java/certs/ca.crt
+  use_private_ssl: true
+
   # ============================== LICENSE KEY ===============================
   # You must specify the license key associated with your New Relic
   # account. For example, if your license key is 12345 use this:
