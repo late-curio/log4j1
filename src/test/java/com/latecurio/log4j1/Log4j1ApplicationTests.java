@@ -59,41 +59,5 @@ class Log4j1ApplicationTests {
 		post.disconnect();
 	}
 
-//	@Test
-	void contextLoads() throws InterruptedException, IOException {
-//		for (int i = 0; i < 5; i++) {
-//			ResponseEntity<String> response =
-//					restTemplate.getForEntity("http://localhost:" + port + "/info?message=Hi-" + System.currentTimeMillis(),
-//							String.class);
-//			System.out.println(response.getBody());
-//			Thread.sleep(1000);
-//		}
-
-		final String uri = "https://localhost:10101";
-		final HttpGet httpGet = new HttpGet(uri);
-		httpGet.setProtocolVersion(HttpVersion.HTTP_1_0);
-		final HttpParams params = new BasicHttpParams();
-		params.setParameter("method", "test_data_get_scoped_metrics");
-		params.setParameter("protocol_version", 17);
-		httpGet.setParams(params);
-		HttpResponse response = httpClient.execute(httpGet);
-
-		Assertions.assertEquals(response.getStatusLine().getStatusCode(), 200);
-
-//		Map<String, String> uriParam = new HashMap<>();
-//		uriParam.put("account", "my_account");
-//
-//		UriComponents builder = UriComponentsBuilder.fromHttpUrl(uri)
-//				.queryParam("method","get_metrics")
-//				.queryParam("protocol_version","17").build();
-//
-//		HttpEntity<String> requestEntity = new HttpEntity<>(null);
-//
-//		ResponseEntity<String> validateResponse = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, requestEntity,
-//				String.class, uriParam);
-////		ResponseEntity<String> validateResponse =
-////				restTemplate.getForEntity("https://localhost:10101", String.class);
-//		Assertions.assertEquals(200, validateResponse.getStatusCodeValue());
-	}
 
 }
