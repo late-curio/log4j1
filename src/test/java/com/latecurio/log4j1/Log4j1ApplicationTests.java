@@ -15,7 +15,16 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.client.RestTemplate;
 
+import javax.net.SocketFactory;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -33,6 +42,24 @@ class Log4j1ApplicationTests {
 //	TestRestTemplate restTemplate = new TestRestTemplate();
 
 	@Test
+	public void testMockCollector() throws KeyManagementException, IOException, NoSuchAlgorithmException {
+		SSLContext sslContext = SSLContext.getInstance("TLS");
+		sslContext.init(null, new TrustManager[]{new UnsafeJavaTrustManager()}, null);
+		SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
+
+		HttpsURLConnection post = (HttpsURLConnection) new URL("https://localhost:10101?method=test_data_get_scoped_metrics&protocol_version=17").openConnection();
+		post.setSSLSocketFactory(sslSocketFactory);
+		post.connect();
+		int responseCode = post.getResponseCode();
+
+		//String body = post.getInputStream()
+
+		Assertions.assertEquals(200, responseCode);
+
+		post.disconnect();
+	}
+
+//	@Test
 	void contextLoads() throws InterruptedException, IOException {
 //		for (int i = 0; i < 5; i++) {
 //			ResponseEntity<String> response =
@@ -41,7 +68,6 @@ class Log4j1ApplicationTests {
 //			System.out.println(response.getBody());
 //			Thread.sleep(1000);
 //		}
-
 
 		final String uri = "https://localhost:10101";
 		final HttpGet httpGet = new HttpGet(uri);
