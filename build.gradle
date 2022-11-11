@@ -32,6 +32,7 @@ bootRun {
 			//"-javaagent://Users/tcrone/nr/newrelic-agent-7.11.0.jar",
 			"-Dnewrelic.config.file=${project.projectDir}/newrelic/newrelic.yml",
 			"-Dnewrelic.environment=staging",
+			"-Dnewrelic.logfile=${project.projectDir}/newrelic/newrelic_agent.log",
 			"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"
 	]
 }
