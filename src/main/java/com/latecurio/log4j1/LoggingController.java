@@ -19,6 +19,7 @@ public class LoggingController {
     public String logInfo(@RequestParam String message) throws InterruptedException {
         Thread.sleep(1000);
         MDC.put("mdc", "data");
+        MDC.put("something", "interesting");
         LOG.info(message);
         return message;
     }
